@@ -1,45 +1,37 @@
-<script setup>
-// import Homepage from './components/Homepage/Homepage.vue'
-// import About from './components/About/About.vue'
+<script>
+import Homepage from './components/Homepage/Homepage.vue'
+import About from './components/About/About.vue'
+
+export default {
+  components: {
+    Homepage,
+    About,
+  },
+  data: () => ({
+    currentPage: "Home",
+  }),
+  methods: {
+    showHomePage() {
+      this.currentPage = "Home";
+    },
+    showAboutPage() {
+      this.currentPage = "About";
+    },
+  },
+};
 </script>
 
 <template>
-
   <div class="wrapper">
-    <Homepage />
+    <header>
+      <nav class="nav">
+        <a href="#" @click.prevent="showHomePage">Home</a>
+        <a href="#" @click.prevent="showAboutPage">About</a>
+      </nav>
+    </header>
+    <Homepage v-if="currentPage === 'Home'" />
+    <About v-else />
   </div>
 
 
-  <main>
-    <TheWelcome />
-  </main>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>./components/Navigation/HelloWorld.vue./components/Homepage/HelloWorld.vue
